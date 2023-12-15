@@ -9,7 +9,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.bottomnav.InventoryApplication
+import com.example.bottomnav.ItemListAdapter
 import com.example.bottomnav.data.Item
 import com.example.bottomnav.databinding.FragmentDashboardBinding
 
@@ -39,9 +41,19 @@ class DashboardFragment : Fragment() {
 
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
         val root: View = binding.root
+        binding.recyclerView.layoutManager = LinearLayoutManager(this.context)
 
         binding.btnPut.setOnClickListener { insertData() }
         binding.btnGet.setOnClickListener{findItem()}
+        val adapter = ItemListAdapter {
+        }
+        binding.recyclerView.adapter = adapter
+
+        dashboardViewModel.allItems.observe(this.viewLifecycleOwner) { items ->
+            items.let {
+                adapter.submitList(it)
+            }
+        }
 
        /* val textView: TextView = binding.textDashboard
         dashboardViewModel.text.observe(viewLifecycleOwner) {
