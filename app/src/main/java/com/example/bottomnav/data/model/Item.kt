@@ -1,4 +1,4 @@
-package com.example.bottomnav.data
+package com.example.bottomnav.data.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

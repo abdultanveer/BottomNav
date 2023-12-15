@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
-import com.example.bottomnav.data.Item
+import com.example.bottomnav.data.model.Item
 import com.example.bottomnav.data.database.ItemDao
 import kotlinx.coroutines.launch
 

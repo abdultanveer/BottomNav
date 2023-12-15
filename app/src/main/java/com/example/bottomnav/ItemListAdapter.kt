@@ -4,7 +4,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.bottomnav.data.Item
+import com.example.bottomnav.data.model.Item
 import com.example.bottomnav.databinding.ItemListItemBinding
 
 /**

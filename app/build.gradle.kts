@@ -40,9 +40,12 @@ android {
 }
 
 dependencies {
+    // Coil
+    implementation ("io.coil-kt:coil:1.1.1")
     //roomdb
     implementation("androidx.room:room-common:2.6.0")
     implementation("androidx.room:room-ktx:2.6.0")
+    implementation("androidx.databinding:databinding-common:8.2.0")
     kapt ("androidx.room:room-compiler:2.6.0")
 
     // Moshi

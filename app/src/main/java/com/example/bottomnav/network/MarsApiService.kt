@@ -1,6 +1,6 @@
 package com.example.bottomnav.network
 
-import com.example.bottomnav.data.MarsPhoto
+import com.example.bottomnav.data.model.MarsPhoto
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit
