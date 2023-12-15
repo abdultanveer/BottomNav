@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("kotlin-kapt")
 }
 
 android {
@@ -39,6 +40,11 @@ android {
 }
 
 dependencies {
+    //roomdb
+    implementation("androidx.room:room-common:2.6.0")
+    implementation("androidx.room:room-ktx:2.6.0")
+    kapt ("androidx.room:room-compiler:2.6.0")
+
     // Moshi
     implementation ("com.squareup.moshi:moshi-kotlin:1.13.0")
     // Retrofit with Moshi Converter

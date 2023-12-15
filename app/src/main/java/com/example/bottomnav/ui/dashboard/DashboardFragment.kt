@@ -6,10 +6,22 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import com.example.bottomnav.InventoryApplication
+import com.example.bottomnav.data.Item
 import com.example.bottomnav.databinding.FragmentDashboardBinding
 
 class DashboardFragment : Fragment() {
+
+    private val dashboardViewModel: DashboardViewModel by viewModels<DashboardViewModel> {
+        InventoryViewModelFactory(
+            (activity?.application as InventoryApplication)
+                .database
+                .itemDao()
+        )
+    }
 
     private var _binding: FragmentDashboardBinding? = null
 
@@ -22,17 +34,25 @@ class DashboardFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val dashboardViewModel =
-            ViewModelProvider(this).get(DashboardViewModel::class.java)
+        /*val dashboardViewModel =
+            ViewModelProvider(this).get(DashboardViewModel::class.java)*/
 
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textDashboard
+        binding.btnPut.setOnClickListener { insertData() }
+
+       /* val textView: TextView = binding.textDashboard
         dashboardViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
-        }
+        }*/
         return root
+    }
+
+    private fun insertData() {
+       var itemName = binding.etDb.text.toString()
+        var item = Item(11,itemName,20.0,22)
+        dashboardViewModel.insertItem(item)
     }
 
     override fun onDestroyView() {
