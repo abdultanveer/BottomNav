@@ -41,6 +41,7 @@ class DashboardFragment : Fragment() {
         val root: View = binding.root
 
         binding.btnPut.setOnClickListener { insertData() }
+        binding.btnGet.setOnClickListener{findItem()}
 
        /* val textView: TextView = binding.textDashboard
         dashboardViewModel.text.observe(viewLifecycleOwner) {
@@ -53,6 +54,12 @@ class DashboardFragment : Fragment() {
        var itemName = binding.etDb.text.toString()
         var item = Item(11,itemName,20.0,22)
         dashboardViewModel.insertItem(item)
+    }
+
+    private fun findItem() {
+        dashboardViewModel.retrieveItem(binding.etDb.text.toString().toInt()).observe(this.viewLifecycleOwner) {
+                foundItem -> binding.tvDb.text = foundItem.toString()
+        }
     }
 
     override fun onDestroyView() {
