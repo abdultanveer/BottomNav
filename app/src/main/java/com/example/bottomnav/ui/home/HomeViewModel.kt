@@ -21,11 +21,17 @@ class HomeViewModel : ViewModel() {
 
      fun getMarsPhotos() {
         viewModelScope.launch {
-            val listResult = MarsApi.retrofitService.getPhotos()
-            _text.value = listResult
-          //  _status.value = listResult
+            try {
+                val listResult = MarsApi.retrofitService.getPhotos()
+              //  _text.value = listResult
+                _text.value = "Success: ${listResult.size} Mars photos retrieved"+"id of the first json is ${listResult.get(0).id}"
 
+                //  _status.value = listResult
+            }
+            catch (e: Exception) {
+              //  _status.value = "Failure: ${e.message}"
 
+            }
         }
     }
 
